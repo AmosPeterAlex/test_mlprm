@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:test_nexteons/responsive_layout_builder.dart';
-import 'package:test_nexteons/screen/frame/view.dart';
 import 'package:test_nexteons/screen/home/responsive/lap_home.dart';
 import 'package:test_nexteons/screen/home/responsive/mobile_home.dart';
 import 'package:test_nexteons/screen/home/responsive/tab_home.dart';
@@ -16,6 +15,8 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return ResponsiveLayoutBuilder(
-        lapView: LapHome(), mobView: MobileHome(), tabView: LapHome());
+        lapView: LapHome(), mobView: LapHome(), tabView: LapHome());
+
+        //lap home tobe chNGED
   }
 }

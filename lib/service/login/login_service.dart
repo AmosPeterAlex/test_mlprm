@@ -2,8 +2,8 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 
-class LoginService {
-  static loginService(url, body) async {
+class ApiService {
+  static fnService(url, body) async {
     try {
       var response =
           await Dio().post(url, data: body);

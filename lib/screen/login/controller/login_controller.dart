@@ -18,7 +18,7 @@ class LoginController extends GetxController {
   fnOnLogin(String emailC, String passC) async {
     if (formKey.currentState!.validate()) {
       var body = {"email": emailC, "password": passC};
-      var resBody = await LoginService.loginService(url, body);
+      var resBody = await ApiService.fnService(url, body);
 
       if (resBody['data']['_id'] != null) {
         var id = resBody['data'];
