@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
+import 'package:test_nexteons/screen/global_widgets/text_field.dart';
 import 'package:test_nexteons/screen/login/controller/login_controller.dart';
 import 'package:test_nexteons/utils/constants/color_constants.dart';
 
@@ -63,70 +64,61 @@ class LapLogin extends StatelessWidget {
               child: Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text("Welcome Back! Glad to\nsee you again"),
-                    SizedBox(
-                      height: size.height * .03,
-                    ),
-                    Container(
-                      height: size.height * .1,
-                      width: size.width * .28,
-                      child: TextFormField(
-                        controller: controller.emailC,
-                        // validator: this field is required,
-                        decoration: InputDecoration(
-                            fillColor: ColorConstants.textFieldColor,
-                            filled: true,
-                            hintText: "Email",
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: BorderSide.none)),
+                child: Form(
+                  key: controller.formKey,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("Welcome Back! Glad to\nsee you again"),
+                      SizedBox(
+                        height: size.height * .03,
                       ),
-                    ),
-                    SizedBox(
-                      height: size.height * .03,
-                    ),
-                    Container(
-                      height: size.height * .1,
-                      width: size.width * .28,
-                      child: TextFormField(
-                        controller: controller.passC,
-                        decoration: InputDecoration(
-                            fillColor: ColorConstants.textFieldColor,
-                            filled: true,
-                            hintText: "Password",
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: BorderSide.none)),
+                      TextFieldWidget(
+                          controller: controller.emailC,
+                          hintText: "Email",
+                          fillColor: ColorConstants.textFieldColor,
+                          height: size.height * .1,
+                          width: size.width * .28),
+                      SizedBox(
+                        height: size.height * .03,
                       ),
-                    ),
-                    SizedBox(
-                      height: size.height * .01,
-                    ),
-                    Align(
-                      alignment: Alignment.bottomRight,
-                      child: Text("Forgot Password"),
-                    ),
-                    SizedBox(
-                      height: size.height * .03,
-                    ),
-                    Container(
-                      height: size.height * .054,
-                      width: size.width * .2,
-                      child: MaterialButton(
-                        // onPressed: controller.fnOnLogin(
-                        //     controller.emailC.text, controller.passC.text),
-                        onPressed: () {
-                          controller.fnOnLogin(controller.emailC.text, controller.passC.text);
-                        },
-                        child: Text("Login"),
-                        color: ColorConstants.primaryColor,
-                        // color: ,
+                      TextFieldWidget(
+                          controller: controller.passC,
+                          hintText: "Password",
+                          fillColor: ColorConstants.textFieldColor,
+                          height: size.height * .1,
+                          width: size.width * .28),
+                      SizedBox(
+                        height: size.height * .01,
                       ),
-                    )
-                  ],
+                      Padding(
+                        padding: const EdgeInsets.only(right: 15),
+                        child: Align(
+                          alignment: Alignment.bottomRight,
+                          child: Text("Forgot Password",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14)),
+                        ),
+                      ),
+                      SizedBox(
+                        height: size.height * .03,
+                      ),
+                      Container(
+                        height: size.height * .054,
+                        width: size.width * .2,
+                        child: MaterialButton(
+                          // onPressed: controller.fnOnLogin(
+                          //     controller.emailC.text, controller.passC.text),
+                          onPressed: () {
+                            controller.fnOnLogin(
+                                controller.emailC.text, controller.passC.text);
+                          },
+                          shape: RoundedRectangleBorder(),
+                          child: Text("LOGIN",style: TextStyle(color: Colors.white,fontSize: 14),),
+                          color: ColorConstants.primaryColor,
+                          // color: ,
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),

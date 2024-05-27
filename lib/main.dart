@@ -15,7 +15,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      home: LoginView(),debugShowCheckedModeBanner: false,
+      home: LoginView(),
+      debugShowCheckedModeBanner: false,
     );
 
     // return GetMaterialApp.router(
@@ -26,3 +27,5 @@ class MyApp extends StatelessWidget {
     // );
   }
 }
+//login
+// fayiz1727@gmail.com

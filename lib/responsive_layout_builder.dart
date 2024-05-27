@@ -4,15 +4,15 @@ import 'utils/constants/size_functions.dart';
 // import 'package:nexteons_internship_task/utils/constants/size_check.dart';
 
 class ResponsiveLayoutBuilder extends StatelessWidget {
-  final Widget iPhoneView;
-  final Widget iPadView;
-  final Widget macView;
+  final Widget mobView;
+  final Widget tabView;
+  final Widget lapView;
 
   ResponsiveLayoutBuilder(
       {super.key,
-      required this.macView,
-      required this.iPhoneView,
-      required this.iPadView});
+      required this.lapView,
+      required this.mobView,
+      required this.tabView});
 
   @override
   Widget build(BuildContext context) {
@@ -21,11 +21,11 @@ class ResponsiveLayoutBuilder extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         if (fnCheckIphone(size.width)) {
-          return iPhoneView;
+          return mobView;
         } else if (fnCheckIPad(size.width)) {
-          return iPadView;
+          return tabView;
         } else {
-          return macView;
+          return lapView;
         }
       },
     );

@@ -31,13 +31,13 @@ class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     return ResponsiveLayoutBuilder(
-        macView: LapLogin(
+        lapView: LapLogin(
           controller: controller,
         ),
-        iPhoneView: MobLogin(
+        mobView: MobLogin(
           controller: controller,
         ),
-        iPadView: TabLogin(
+        tabView: TabLogin(
           controller: controller,
         ));
   }
