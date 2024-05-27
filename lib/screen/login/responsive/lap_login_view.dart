@@ -54,7 +54,6 @@ class LapLogin extends StatelessWidget {
         Container(
           height: size.height - 50,
           width: size.width * .3,
-          // color: ColorConstants.cardColor,
           child: Center(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
