@@ -15,13 +15,16 @@ import 'package:test_nexteons/config/app_config.dart';
 import 'package:test_nexteons/service/login/login_service.dart';
 
 class LoginController extends GetxController {
+  final formKey = GlobalKey<FormState>();
+  var emailC = TextEditingController();
+  var passC = TextEditingController();
   // var header = Constants.headerWithoutToken;
   // var body = Payload.loginPayload();
   // final baseUrl = "https://migrainetracker.api.salonsyncs.com/";
   var url = "${AppConfig.baseUrl}api/user/login";
 
   fnOnLogin(String email, String pass) async {
-    var body = {"email": "fayiz1727@gmail.com", "password": "1234"};
+    var body = {"email": emailC.text, "password": passC.text};
     // var body = {"email": "fayiz1727@gmail.com", "password": "1234"};
     var resBody = await LoginService.loginService(url, body);
 

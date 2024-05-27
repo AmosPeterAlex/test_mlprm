@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'utils/constants/size_functions.dart';
 // import 'package:nexteons_internship_task/utils/constants/size_check.dart';
 
 class ResponsiveLayoutBuilder extends StatelessWidget {
@@ -15,17 +17,17 @@ class ResponsiveLayoutBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    return Scaffold();
-    // return LayoutBuilder(
-    // builder: (context, constraints) {
-    // if (fnCheckIphone(size.width)) {
-    //   return iPhoneView;
-    // } else if (fnCheckIPad(size.width)) {
-    //   return iPadView;
-    // } else {
-    //   return macView;
-    // }
-    // },
-    // );
+    // return Scaffold();
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        if (fnCheckIphone(size.width)) {
+          return iPhoneView;
+        } else if (fnCheckIPad(size.width)) {
+          return iPadView;
+        } else {
+          return macView;
+        }
+      },
+    );
   }
 }
