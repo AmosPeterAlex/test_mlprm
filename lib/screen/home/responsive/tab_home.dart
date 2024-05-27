@@ -5,7 +5,8 @@ class TabHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold( body: Center(child: Text("tab home")),
+    return Scaffold(
+      body: Center(child: Text("tab home")),
       //set a frame to shell route all buttons
     );
   }
