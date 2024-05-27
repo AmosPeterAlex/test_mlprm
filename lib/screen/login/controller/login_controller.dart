@@ -27,7 +27,7 @@ class LoginController extends GetxController {
         log('---------{$name}');
         // Get.to(HomeView());
         // Get.off(()=>HomeView());//working with getx alone
-        GoRouter.of(navigatorKey.currentContext!).goNamed("Frame");
+        GoRouter.of(navigatorKey.currentContext!).goNamed("Home");
       } else {
         log("else in controller");
       }

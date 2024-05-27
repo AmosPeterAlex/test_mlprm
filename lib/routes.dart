@@ -16,15 +16,25 @@ final router = GoRouter(
         path: '/login',
         builder: (context, state) => LoginView(),
       ),
-      ShellRoute(
-          builder: (context, state, child) => FrameView(child: child),
-          routes: [
-            GoRoute(
+      GoRoute(
               name: "Home",
               path: '/home',
               builder: (context, state) => HomeView(),
-            ),
-          ])
+            ), GoRoute(
+              name: "Frame",
+              path: '/frame',
+              builder: (context, state) => FrameView(),
+            )
+                ]);
+      // ShellRoute(
+      //     builder: (context, state, child) => FrameView(child: child),
+      //     routes: [
+      //       GoRoute(
+      //         name: "Home",
+      //         path: '/home',
+      //         builder: (context, state) => HomeView(),
+      //       ),
+      //     ])
 
       // GoRoute(
       //   name: "Frame",
@@ -33,7 +43,7 @@ final router = GoRouter(
       //     child: null,
       //   ),
       // ),
-    ]);
+    // ]);
 
 // Future<bool> isLogged() async {
 //   final SharedPreferences prefs = await SharedPreferences.getInstance();
