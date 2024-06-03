@@ -1,17 +1,16 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 void main() {
   runApp(MaterialApp(
     home: GridCard(data: const [
-      "ab\nfcdefgh\nijkl\nmn\nopq\nfestuv\nfwxyz",
-      "m",
+      "ab\nfcdefgh\nijkl\nmn\nopq\nfestuv\nfwnijkl\nmn\nopq\nfestuv\nfwxyz",
+      "mnijkl\nmn\nopq\nfestuv\nfw",
       "ab\nfcdefgh\nijklmnopq\nfestuv\nfwxppppp",
       "m",
       "ab\nfcdefgh\nijkl\nmn\nopq\nfestuv\nfwxyz",
       "m",
-      "ab\nfcdefgh\nijklmnopq\nfestuv\nfwxppppp",
+      "ab\nfcdefnijkl\nmn\nopq\nfestuv\nfwgh\nijklmnopq\nfestuv\nfwxppppp",
       "m",
       "ab\nfcdefgh\nijkl\nmn\nopq\nfestuv\nfwxyz",
       "m",
@@ -50,20 +49,13 @@ class GridCard extends StatelessWidget {
                     ),
                   ),
                   Expanded(
-                    child: SingleChildScrollView(
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 2),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              data[index],
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: fontSize),
-                            ),
-                          ],
-                        ),
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 2),
+                      child: Text(
+                        data[index],
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: fontSize),
                       ),
                     ),
                   ),
@@ -96,6 +88,7 @@ double calculateMaxCardHeight(List<String> data, fontSize) {
     maxHeight = max(maxHeight, textPainter.height);
   }
 
+  // return maxHeight ; 
   return maxHeight + fontSize * 3;
 }
 
