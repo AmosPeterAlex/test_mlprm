@@ -22,4 +22,4 @@ class MyApp extends StatelessWidget {
   }
 }
 //login
-// fayiz1727@gmail.comfayiz1727@gmail.com 1234fayiz1727@gmail.com
+// fayiz1727@gmail.com 1234

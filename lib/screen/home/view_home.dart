@@ -15,7 +15,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return ResponsiveLayoutBuilder(
-        lapView: LapHome(), mobView: LapHome(), tabView: LapHome());
+        lapView: LapHome(), mobView: MobileHome(), tabView: LapHome());
 
         //lap home tobe chNGED
   }
