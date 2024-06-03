@@ -75,7 +75,7 @@ class LapHome extends StatelessWidget {
                     return GridView.builder(
                       padding: EdgeInsets.all(10),
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        childAspectRatio: 2,
+                        childAspectRatio: 1.4,
                         crossAxisSpacing: 10,
                         mainAxisSpacing: 10,
                         crossAxisCount: 2,
@@ -92,20 +92,39 @@ class LapHome extends StatelessWidget {
                               // mainAxisAlignment: MainAxisAlignment.center,
                               // crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Text(
-                                  listItem.name ?? 'No Name',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                Row(
+                                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Icon(Icons.home),
+                                    Padding(
+                                      padding:
+                                          EdgeInsets.symmetric(horizontal: 10),
+                                      child: Column(
+                                        // crossAxisAlignment: CrossAxisAlignment.end,
+                                        children: [
+                                          Text(
+                                            listItem.name ?? 'No Name',
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          SizedBox(height: 5),
+                                          Text(
+                                            listItem.details ?? 'No Details',
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    )
+                                  ],
                                 ),
                                 SizedBox(height: 5),
-                                Text(
-                                  listItem.details ?? 'No Details',
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                  ),
-                                ),
+                                Text(listItem.contact ?? "NO NUMBER"),
+                                SizedBox(height: 5),
+                                Text(listItem.details ?? "NO deatils")
                               ],
                             ),
                           ),
