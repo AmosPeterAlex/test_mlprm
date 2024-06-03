@@ -1,80 +1,100 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 
+var dataList = [
+  "ab1111111111111\nfcdefgh\nijkl\nmn\nopq\nfestuv\nfwnijkl\nmn\nopq\nfestuv\nfwxyzabc",
+  "mnijkl\nmn\nopq\nfestuv\nfw",
+  "ab\nfcdefgh\nijklmnopq\nfestuv\nfwxppppp",
+  "m",
+  "ab\nfcdefgh\nijkl\nmn\nopq\nfestuv\nfwxyz",
+  "m33333333333333333333333333333333333333311abc",
+  "ab4444444444nijkl\nmn\nopq\nfestuv\nwgh\nijklmnopq\nfestuv\nfwxpppppabc",
+  "mabc",
+  "ab\nfcdefgh\nijkl\nmn\nopq\nfestuv\nfwxyzabc",
+  "m",
+  "mnijkl\nmn\nopq\nfestuv\nfw",
+  "ab\nfcdefgh\nijklmnopq\nfestuv\nfp",
+  "m",
+  "ab\nfcdefgh\nijkl\nmn\nopq\nfestuv\nfwxyz",
+  "m333333333333333333333333333333333333333333333333333311abc",
+  "ab4444444444nijkl\nmn\nopq\nfestuv\nfwgh\nijklmnopq\nfestuv\nfwxpppppabc",
+  "ab\nfcdefgh\nijklmnopq\nfestuv\nfwxppppp",
+  "m",
+  "mnijkl\nmn\nopq\nfestuv\nfw",
+  "ab\nfcdefgh\nijklmnopq\nfestuv\nfwxppppp",
+  "m",
+  "ab\nfcdefgh\nijkl\nmn\nopq\nfestuv\nfwxyz",
+  "m3333333333333333333333333333333333333333333333333333333333311abc",
+  "ab4444444444nijkl\nmn\nopq\nfestuv\nfwgh\nijklmnopq\nfestuv\nfwxpppppabc",
+  "abcde\nfghijklmnopqes\ntuvwxyz"
+];
 void main() {
   runApp(MaterialApp(
-    home: GridCard(data: const [
-      "ab\nfcdefgh\nijkl\nmn\nopq\nfestuv\nfwnijkl\nmn\nopq\nfestuv\nfwxyz",
-      "mnijkl\nmn\nopq\nfestuv\nfw",
-      "ab\nfcdefgh\nijklmnopq\nfestuv\nfwxppppp",
-      "m",
-      "ab\nfcdefgh\nijkl\nmn\nopq\nfestuv\nfwxyz",
-      "m",
-      "ab\nfcdefnijkl\nmn\nopq\nfestuv\nfwgh\nijklmnopq\nfestuv\nfwxppppp",
-      "m",
-      "ab\nfcdefgh\nijkl\nmn\nopq\nfestuv\nfwxyz",
-      "m",
-      "ab\nfcdefgh\nijklmnopq\nfestuv\nfwxppppp",
-      "m",
-      "abcde\nfghijklmnopqes\ntuvwxyz"
-    ]),
+    home: GridCard(data: dataList),
+    debugShowCheckedModeBanner: false,
   ));
 }
 
 class GridCard extends StatelessWidget {
   final List<String> data;
 
-  GridCard({required this.data});
+  const GridCard({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     var fontSize = size.width * .04;
-    final maxHeight = calculateMaxCardHeight(data, fontSize);
+    final maxHeight = calculateMaxCardHeight(data, fontSize, size);
 
     return Scaffold(
-      body: GridView.builder(
-        itemCount: data.length,
-        itemBuilder: (context, index) {
-          return Card(
-            child: Container(
-              height: maxHeight,
-              child: Row(
-                children: [
-                  Expanded(
-                    child: CircleAvatar(
-                      maxRadius: size.width * .07,
-                      minRadius: size.width * .02,
-                      child: Text("$index",style: TextStyle(fontSize: size.width * .06),),
-                    ),
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 2),
-                      child: Text(
-                        data[index],
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: fontSize),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: GridView.builder(
+          itemCount: data.length,
+          itemBuilder: (context, index) {
+            return Card(
+              child: SizedBox(
+                height: maxHeight,
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: CircleAvatar(
+                        maxRadius: size.width * .07,
+                        minRadius: size.width * .02,
+                        child: Text(
+                          "$index",
+                          style: TextStyle(fontSize: size.width * .06),
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 2),
+                        child: Text(
+                          data[index],
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: fontSize),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          );
-        },
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          mainAxisExtent: maxHeight,
+            );
+          },
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            mainAxisExtent: maxHeight,
+          ),
         ),
       ),
     );
   }
 }
 
-double calculateMaxCardHeight(List<String> data, fontSize) {
+double calculateMaxCardHeight(List<String> data, fontSize, size) {
   double maxHeight = 0;
+  double availableWidth = (size.width / 2) - 30;
   final textPainter = TextPainter(
     textDirection: TextDirection.ltr,
   );
@@ -82,16 +102,15 @@ double calculateMaxCardHeight(List<String> data, fontSize) {
   for (var item in data) {
     textPainter.text = TextSpan(
       text: item,
-      style: TextStyle(fontSize: fontSize),
+      style: TextStyle(fontSize: fontSize + 4),
     );
-    textPainter.layout(maxWidth: 300);
+    textPainter.layout(maxWidth: availableWidth);
     maxHeight = max(maxHeight, textPainter.height);
   }
 
-  // return maxHeight ; 
-  return maxHeight + fontSize * 3;
+  // return maxHeight ;
+  return maxHeight + fontSize * 4;
 }
-
 
 /*
 import 'dart:math';

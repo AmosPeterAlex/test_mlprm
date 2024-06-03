@@ -2,8 +2,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MaterialApp(
-    home: UniformCard(data: const [
+  runApp(const MaterialApp(
+    home: UniformCard(data: [
       // "ab\nfcdefgh\nijkl\nmn\nopq\nfestuv\nfwxyz",
       "m",
       "ab\nfcdefgh\nijklmnopq\nfestuv\nfwxyz",
@@ -34,7 +34,7 @@ void main() {
 class UniformCard extends StatelessWidget {
   final List<String> data;
 
-  UniformCard({required this.data});
+  const UniformCard({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +45,7 @@ class UniformCard extends StatelessWidget {
         itemCount: data.length,
         itemBuilder: (context, index) {
           return Card(
-            child: Container(
+            child: SizedBox(
               height: maxHeight,
               // padding: EdgeInsets.all(15),
               child: Row(
@@ -53,7 +53,7 @@ class UniformCard extends StatelessWidget {
                   CircleAvatar(
                     child: Text("$index"),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 30,
                   ),
                   Column(
@@ -61,7 +61,7 @@ class UniformCard extends StatelessWidget {
                     children: [
                       Text(
                         data[index],
-                        style: TextStyle(
+                        style: const TextStyle(
                           // fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
@@ -95,7 +95,7 @@ double calculateMaxCardHeight(List<String> data) {
   for (var item in data) {
     textPainter.text = TextSpan(
       text: item,
-      style: TextStyle(fontSize: 16),
+      style: const TextStyle(fontSize: 16),
     );
     textPainter.layout(maxWidth: 600);
     maxHeight = max(maxHeight, textPainter.height);
