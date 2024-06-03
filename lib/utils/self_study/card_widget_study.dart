@@ -4,24 +4,23 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(MaterialApp(
     home: UniformCard(data: const [
-      "ab\nfcdefgh\nijklmnopq\nfestuv\nfwxyz",
+      // "ab\nfcdefgh\nijkl\nmn\nopq\nfestuv\nfwxyz",
       "m",
       "ab\nfcdefgh\nijklmnopq\nfestuv\nfwxyz",
       "m",
       "m",
-      "ab\nfcdefgh\nijklmnopq\nfestuv\nfwxyz",
-      "abcde\nfghijklm/nnwxyz",
-      "abcd\nfefghij\nfklmno\nfpqestuvwxyz",
-      "abcde\nfghijklm\nfnopqes\ntuvwxyz",
+      // "ab\nfcdefgh\nijkl\nmn\nopq\nfestuv\nfwxyz",
       "abcdvwxyz",
       "m",
+      // "ab\nfcdefgh\nijkl\nmn\nopq\nfestuv\nfwxyz",
       "m",
-      "ab\nfcdefgh\nijklmnopq\nfestuv\nfwxyz",
+      // "ab\nfcdefgh\nijklmnopq\nfestuv\nfwxyz",
       "m",
       "m",
       "abjklm/nnopqestuvwxyz",
       "abcdefqestuvwxyz",
-      "m",
+      // "m",
+      // "ab\nfcdefgh\nijkl\nmn\nopq\nfestuv\nfwxyz",
       "m",
       "abcd\ntuvwxyz",
       "abcdefgh\nijklmstuvwxyz",
@@ -47,26 +46,35 @@ class UniformCard extends StatelessWidget {
         itemBuilder: (context, index) {
           return Card(
             child: Container(
-              height: maxHeight+50,
-              padding: EdgeInsets.all(15),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              height: maxHeight,
+              // padding: EdgeInsets.all(15),
+              child: Row(
                 children: [
-                  Expanded(
-                    child: Text(
-                      data[index],
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                  CircleAvatar(
+                    child: Text("$index"),
                   ),
-                  SizedBox(height: 5),
-                  Text(
-                    'Details for item ${index + 1}',
-                    style: TextStyle(
-                      fontSize: 14,
-                    ),
+                  SizedBox(
+                    width: 30,
+                  ),
+                  Column(
+                    // crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        data[index],
+                        style: TextStyle(
+                          // fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      // SizedBox(height: 5),
+
+                      // Text(
+                      //   'Details for item ${index + 1}',
+                      //   style: TextStyle(
+                      //     fontSize: 14,
+                      //   ),
+                      // ),
+                    ],
                   ),
                 ],
               ),
@@ -93,5 +101,5 @@ double calculateMaxCardHeight(List<String> data) {
     maxHeight = max(maxHeight, textPainter.height);
   }
 
-  return maxHeight;
+  return maxHeight+10;
 }
