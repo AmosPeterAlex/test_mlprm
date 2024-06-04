@@ -1,33 +1,36 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 
+var dataList2 = [
+  "ab\nfcdefgh\nijkl\nmn\nopq\nfestuv\nfwxyz",
+  "m",
+  "ab\nfcdefgh\nijklmnopq\nfestuv\nfwxyz",
+  "m",
+  "m",
+  "ab\nfcdefgh\nijkl\nmn\nopq\nfestuv\nfwxyz",
+  "abcdvwxyz",
+  "m",
+  "ab\nfcdefgh\nijkl\nmn\nopq\nfestuv\nfwxyz",
+  "m",
+  "ab\nfcdefgh\nijklmnopq\nfestuv\nfwxyz",
+  "m",
+  "m",
+  "abjklm/nnopqestuvwxyz",
+  "abcdefqestuvwxyz",
+  // "m",
+  "ab\nfcdefgh\nijkl\nmn\nopq\nfestuv\nfwxyz",
+  "m",
+  "abcd\ntuvwxyz",
+  "abcdefgh\nijklmstuvwxyz",
+  "m",
+  "m",
+  "abcde\nfghijklmnopqes\ntuvwxyz"
+];
 void main() {
-  runApp(const MaterialApp(
-    home: UniformCard(data: [
-      // "ab\nfcdefgh\nijkl\nmn\nopq\nfestuv\nfwxyz",
-      "m",
-      "ab\nfcdefgh\nijklmnopq\nfestuv\nfwxyz",
-      "m",
-      "m",
-      // "ab\nfcdefgh\nijkl\nmn\nopq\nfestuv\nfwxyz",
-      "abcdvwxyz",
-      "m",
-      // "ab\nfcdefgh\nijkl\nmn\nopq\nfestuv\nfwxyz",
-      "m",
-      // "ab\nfcdefgh\nijklmnopq\nfestuv\nfwxyz",
-      "m",
-      "m",
-      "abjklm/nnopqestuvwxyz",
-      "abcdefqestuvwxyz",
-      // "m",
-      // "ab\nfcdefgh\nijkl\nmn\nopq\nfestuv\nfwxyz",
-      "m",
-      "abcd\ntuvwxyz",
-      "abcdefgh\nijklmstuvwxyz",
-      "m",
-      "m",
-      "abcde\nfghijklmnopqes\ntuvwxyz"
-    ]),
+  runApp(MaterialApp(
+    home: UniformCard(
+      data: dataList2,
+    ),
   ));
 }
 
@@ -101,5 +104,6 @@ double calculateMaxCardHeight(List<String> data) {
     maxHeight = max(maxHeight, textPainter.height);
   }
 
-  return maxHeight+10;
+  return maxHeight + 10;
 }
+//
